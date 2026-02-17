@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal Entry - Stefano & Yeşim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/color-wheel.css">
+    <link rel="stylesheet" href="css/entries.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="entry-header-bar">
+        <button class="back-btn" onclick="goBack()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+        </button>
+        <h1 class="entry-date-title" id="dateTitle"></h1>
+        <button class="save-btn-top" onclick="saveEntry()" id="topSaveBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 6L9 17l-5-5"/>
+            </svg>
+        </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="entry-main">
+        <!-- User Toggle -->
+        <div class="user-toggle">
+            <button class="toggle-btn active" id="toggleStefano" onclick="switchUser('stefano')">
+                Stefano
+            </button>
+            <button class="toggle-btn" id="toggleYesim" onclick="switchUser('yesim')">
+                Yeşim
+            </button>
+        </div>
+
+        <!-- Entry Section -->
+        <section class="entry-section">
+            <div class="entry-header-single">
+                <div class="person-avatar" id="currentAvatar">S</div>
+                <div class="entry-header-text">
+                    <h2 class="entry-greeting" id="currentGreeting">Hi Stefano!</h2>
+                    <p class="entry-question">What color was your day?</p>
+                </div>
+            </div>
+            
+            <!-- Color Wheel (single) -->
+            <div class="color-picker-wrapper">
+                <div class="color-wheel" id="colorWheel"></div>
+            </div>
+            
+            <!-- Color Preview -->
+            <div class="color-preview" id="colorPreview">
+                <div class="preview-circle" id="previewCircle"></div>
+                <span class="color-value" id="colorValue">#d4a5a5</span>
+            </div>
+            
+            <!-- Journal Input -->
+            <div class="journal-wrapper">
+                <label class="journal-label">Write about today</label>
+                <textarea 
+                    class="journal-textarea" 
+                    id="journalEntry" 
+                    placeholder="Today I felt..."
+                    rows="6"
+                ></textarea>
+            </div>
+        </section>
+
+        <!-- Bottom Actions -->
+        <div class="entry-actions">
+            <button class="btn-primary btn-save-entry" id="saveBtn" onclick="saveEntry()">
+                Save My Entry
+            </button>
+            <button class="btn-delete-entry" id="deleteBtn" onclick="confirmDelete()">
+                Delete My Entry
+            </button>
+        </div>
+        
+        <p class="save-status" id="saveStatus"></p>
+        
+        <!-- Other Person's Entry Preview -->
+        <div class="other-entry-preview" id="otherEntryPreview">
+            <div class="other-entry-divider">
+                <span class="divider-line"></span>
+                <span class="divider-text">Partner's Entry</span>
+                <span class="divider-line"></span>
+            </div>
+            <div class="other-entry-content" id="otherEntryContent">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal">
+            <h3 class="modal-title">Delete Entry?</h3>
+            <p class="modal-text">Are you sure you want to delete this entry? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="cancelDelete()">Cancel</button>
+                <button class="btn-confirm-delete" onclick="deleteEntry()">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal success-modal">
+            <div class="success-icon">✓</div>
+            <h3 class="modal-title">Saved!</h3>
+            <p class="modal-text">Your entry has been recorded.</p>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p>Loading entry...</p>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/firebase-storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/color-wheel.js"></script>
+    <script src="js/entries.js"></script>
+</body>
+</html>

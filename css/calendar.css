@@ -1,0 +1,497 @@
+/* Calendar Styles - Warm Palette Edition */
+
+/* Page Header */
+.page-header {
+    background: var(--color-bg);
+    padding: var(--space-lg) var(--space-xl);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+}
+
+.nav-arrow {
+    background: transparent;
+    border: none;
+    padding: var(--space-sm);
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+    border-radius: var(--radius-md);
+}
+
+.nav-arrow:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.nav-arrow svg {
+    width: 24px;
+    height: 24px;
+}
+
+.month-selector {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    cursor: pointer;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.month-selector:hover {
+    background: var(--color-bg-hover);
+}
+
+.month-title {
+    font-family: var(--font-ui);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+}
+
+.dropdown-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-muted);
+}
+
+/* Main Content */
+.main-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+}
+
+/* Calendar Wrapper */
+.calendar-wrapper {
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--space-lg);
+}
+
+/* Weekday Header */
+.weekday-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+}
+
+.weekday-header span {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Calendar Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: var(--space-xs);
+}
+
+/* Calendar Day Block */
+.calendar-day {
+    aspect-ratio: 1;
+    border-radius: var(--radius-md);
+    position: relative;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    overflow: hidden;
+    background: var(--color-bg-secondary);
+}
+
+.calendar-day:hover {
+    transform: scale(1.08);
+    z-index: 10;
+    box-shadow: var(--shadow-md);
+}
+
+.calendar-day.empty {
+    background: transparent;
+    cursor: default;
+    pointer-events: none;
+}
+
+.calendar-day.empty:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Day Colors - Split for Stefano & Yeşim */
+.day-colors {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.day-color {
+    width: 100%;
+    height: 100%;
+}
+
+.day-color.stefano-color {
+    background: var(--stefano-color, var(--color-bg-secondary));
+}
+
+.day-color.yesim-color {
+    background: var(--yesim-color, var(--color-bg-secondary));
+}
+
+/* Day Number */
+.day-number {
+    position: absolute;
+    bottom: 3px;
+    right: 5px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    opacity: 0.8;
+    z-index: 2;
+    text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+}
+
+/* Today Indicator */
+.calendar-day.today {
+    box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+.calendar-day.today .day-number {
+    font-weight: 700;
+    color: var(--color-text-primary);
+    opacity: 1;
+}
+
+/* Has Entry Indicator */
+.calendar-day.has-entry::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--color-text-primary);
+    border-radius: 50%;
+    z-index: 3;
+}
+
+/* Legend */
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+    padding: var(--space-md);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}
+
+.legend-color {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+}
+
+.legend-color.stefano {
+    background: #d4a5a5;
+}
+
+.legend-color.yesim {
+    background: #a8c0a8;
+}
+
+/* Entries Section */
+.entries-section {
+    margin-top: var(--space-2xl);
+}
+
+.section-title {
+    font-family: var(--font-ui);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-lg);
+    padding-left: var(--space-sm);
+}
+
+.entries-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+/* Entry Card */
+.entry-card-preview {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    gap: var(--space-md);
+    transition: all var(--transition-base);
+    cursor: pointer;
+}
+
+.entry-card-preview:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.entry-date-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 50px;
+}
+
+.entry-day-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1;
+}
+
+.entry-day-name {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+.entry-preview-content {
+    flex: 1;
+}
+
+.entry-preview-colors {
+    display: flex;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-sm);
+}
+
+.preview-color-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.entry-preview-text {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Entry Preview Rows - For showing both Stefano and Yeşim */
+.entry-preview-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.entry-preview-row:last-child {
+    border-bottom: none;
+}
+
+.entry-preview-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.entry-preview-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    min-width: 60px;
+    flex-shrink: 0;
+}
+
+.entry-preview-row .entry-preview-text {
+    -webkit-line-clamp: 1;
+    flex: 1;
+}
+
+.entry-preview-text.muted {
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+/* Empty Entries State */
+.empty-entries {
+    text-align: center;
+    padding: var(--space-2xl);
+    color: var(--color-text-muted);
+}
+
+/* Floating Action Button */
+.fab {
+    position: fixed;
+    bottom: var(--space-xl);
+    right: var(--space-xl);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(232, 160, 176, 0.4);
+    transition: all var(--transition-base);
+    z-index: 50;
+}
+
+.fab:hover {
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 6px 20px rgba(232, 160, 176, 0.5);
+}
+
+.fab:active {
+    transform: scale(0.95);
+}
+
+.fab svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Animations */
+@keyframes dayAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.calendar-day {
+    animation: dayAppear 0.25s ease backwards;
+}
+
+.calendar-day:nth-child(1) { animation-delay: 0.01s; }
+.calendar-day:nth-child(2) { animation-delay: 0.02s; }
+.calendar-day:nth-child(3) { animation-delay: 0.03s; }
+.calendar-day:nth-child(4) { animation-delay: 0.04s; }
+.calendar-day:nth-child(5) { animation-delay: 0.05s; }
+.calendar-day:nth-child(6) { animation-delay: 0.06s; }
+.calendar-day:nth-child(7) { animation-delay: 0.07s; }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .page-header {
+        padding: var(--space-md);
+    }
+    
+    .month-title {
+        font-size: 1.1rem;
+    }
+    
+    .main-content {
+        padding: var(--space-md);
+    }
+    
+    .calendar-wrapper {
+        padding: var(--space-md);
+        border-radius: var(--radius-lg);
+    }
+    
+    .weekday-header {
+        gap: 2px;
+    }
+    
+    .weekday-header span {
+        font-size: 0.65rem;
+    }
+    
+    .calendar-grid {
+        gap: 3px;
+    }
+    
+    .calendar-day {
+        border-radius: 6px;
+    }
+    
+    .day-number {
+        font-size: 0.6rem;
+        bottom: 2px;
+        right: 3px;
+    }
+    
+    .legend {
+        gap: var(--space-lg);
+        padding: var(--space-sm);
+    }
+    
+    .legend-item {
+        font-size: 0.8rem;
+    }
+    
+    .fab {
+        width: 48px;
+        height: 48px;
+        bottom: var(--space-lg);
+        right: var(--space-lg);
+    }
+    
+    .fab svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .entry-card-preview {
+        padding: var(--space-md);
+    }
+    
+    .entry-day-number {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .calendar-wrapper {
+        padding: var(--space-sm);
+    }
+    
+    /* Day numbers now remain visible on mobile */
+}
